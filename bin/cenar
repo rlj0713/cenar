@@ -1,3 +1,7 @@
 #!/usr/bin/env ruby
 
-puts "Hello World"
+require_relative '../config/environment'
+
+Cenar::CLI.new.call
+#  .new is a class method on the CLI class*
+#  .call is an instance method on the new instance of CLI
