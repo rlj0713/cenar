@@ -1,26 +1,37 @@
 
 class Cenar::Recipe
-    attr_accessor :name, :protein, :procedure, :shopping_list
+    attr_accessor :recipe_id, :full_hash
 
     @@all = []
     
-    def initialize(name)
-        @name = name
-        @protein = protein
-        @procedure = procedure
-        @shopping_list = shopping_list
+    def initialize(recipe_id)
+        @recipe_id = recipe_id
+        @full_hash = HTTParty.get('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + self.recipe_id.to_s).values[0][0]
         @@all << self
     end
 
-    def show_recipes_by_protein
-        input = gets.chomp
-        puts @@all.select { |recipe| recipe.protein == user_input }
-
-        # 1 - Pork https://www.themealdb.com/api/json/v1/1/filter.php?c=pork
-        # 2 - Chicken https://www.themealdb.com/api/json/v1/1/filter.php?c=chicken
-        # 3 - Beef https://www.themealdb.com/api/json/v1/1/filter.php?c=beef
-        # 4 - Vegetarian https://www.themealdb.com/api/json/v1/1/filter.php?c=Vegetarian
-        # 5 - Seafood https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood
+    def name
+        @full_hash
+        @name = @full_hash.select { |k, v| k == "strMeal" }
+        @name = @name.values[0]
     end
+
+    def procedure
+        @instructions = @full_hash.select { |k, v| k == "strInstructions" }
+        @instructions =  @instructions.values[0]
+    end
+
+    def shopping_list
+        @list = @full_hash.select { |k, v| k.include?("strIngredient") && v != "" }
+        @list = @list.values
+        
+        @quantity = @full_hash.select { |k, v| k.include?("strMeasure") && v != "" }
+        @quantity = @quantity.values
+        
+        h = {}
+        @merged = @list.zip(@quantity) { |a,b| h[a.to_sym] = b }
+        ap h, :indent => -2
+    end
+
 
 end

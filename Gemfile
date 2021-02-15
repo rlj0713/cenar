@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gemspec
 
 gem "rake", "~> 13.0"
-gem "HTTParty", :git => "git@github.com:jnunemaker/httparty.git"
+gem "httparty"
 
 # gem "rspec/minitest/test-unit", "~> "
 
