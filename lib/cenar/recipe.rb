@@ -25,11 +25,15 @@ class Cenar::Recipe
         @list = @full_hash.select { |k, v| k.include?("strIngredient") && v != "" && v != nil}
         @list = @list.values
         
-        @quantity = @full_hash.select { |k, v| k.include?("strMeasure") && v != "" && v != nil}
+        @quantity = @full_hash.select { |k, v| k.include?("strMeasure") && v != " " && v != nil}
         @quantity = @quantity.values
         
         @merged = Hash[@list.zip(@quantity)]
-        ap @merged, :indent => -2
+        ap @merged, :indent => -2                   #Pretty, but not good enough
+
+        # @merged.each do |key, value|              #This looks ugly, iterate through and make a format.
+        #     puts "#{value} --- #{key}"
+        # end
     end
 
 end
