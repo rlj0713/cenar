@@ -22,16 +22,14 @@ class Cenar::Recipe
     end
 
     def shopping_list
-        @list = @full_hash.select { |k, v| k.include?("strIngredient") && v != "" }
+        @list = @full_hash.select { |k, v| k.include?("strIngredient") && v != "" && v != nil}
         @list = @list.values
         
-        @quantity = @full_hash.select { |k, v| k.include?("strMeasure") && v != "" }
+        @quantity = @full_hash.select { |k, v| k.include?("strMeasure") && v != "" && v != nil}
         @quantity = @quantity.values
         
-        h = {}
-        @merged = @list.zip(@quantity) { |a,b| h[a.to_sym] = b }
-        ap h, :indent => -2
+        @merged = Hash[@list.zip(@quantity)]
+        ap @merged, :indent => -2
     end
-
 
 end

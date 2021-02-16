@@ -12,7 +12,7 @@ class Cenar::API
         all_meals = HTTParty.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + protein_options[protein_number])
         all_meals.each do |meals|
             i = 1
-            meals[1].each do |recipe_hashes|
+            meals[1].take(15).each do |recipe_hashes|
                 puts "#{i}. - #{recipe_hashes.values[0]}"
                 i += 1
                 @@all << recipe_hashes    

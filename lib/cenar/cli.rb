@@ -16,13 +16,12 @@ class Cenar::CLI
         puts "                  "
         puts "Good evening, what do you feel like eating for dinner?"
         puts ""
-        get_user_choice1        #User chooses their protein
-        api1 = Cenar::API.new
-        api1.create_all_meals(@choice1)
-        @choice2 = get_user_choice2
-
+        get_user_choice1                                            # User chooses their protein
+        api1 = Cenar::API.new                                       # A new instance of the API class is created
+        api1.create_all_meals(@choice1)                             # Print a list of recipes for the protein chosen
+        @choice2 = get_user_choice2                                 # User chooses a recipe                                               
         recipe_number = api1.get_recipe_id(@choice2)
-        # binding.pry
+        # binding.pry                # 
         recipe1 = Cenar::Recipe.new(recipe_number)
         puts "You have chosen #{recipe1.name}, great choice!"
         puts ""
@@ -50,8 +49,6 @@ class Cenar::CLI
         puts "Please enter a recipe number to view the recipe & shopping list."
         @choice2 = gets.chomp
         @final = get_recipe_by_number(@choice2)
-        # puts ""
-        # @choice2
     end
 
     def get_meals_by_protein(user_choice) # list recipes_by_protein
@@ -67,8 +64,7 @@ class Cenar::CLI
 
     def get_recipe_by_number(user_choice2)
         user_choice2 = user_choice2.to_i
-        if user_choice2 > 0                          #Come back and set a limit to this number & add a confirmation message.
-            # binding.pry
+        if user_choice2 > 0 && user_choice2 <= 15
             user_choice2 -= 1
         else
             get_user_choice2
