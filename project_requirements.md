@@ -1,5 +1,5 @@
 
-Think Aloud Videos:
+## Think Aloud Videos:
 
     All 4 parts combined - https://www.youtube.com/watch?v=hOdLwFAtJN0&list=PLcST98QTzmMgdY4b-nMx4CYYJAMIw6DXc&ab_channel=ReidJackson
 
@@ -9,10 +9,12 @@ Think Aloud Videos:
     Part 4 - https://youtu.be/44CLKfgKY4U
 
 
-Link to Blog:
+## Link to Blog:
 
     https://rlj0713.medium.com/i-set-out-to-build-my-first-application-in-ruby-this-month-37636302dac9
 
 
-Link to ~10 min video:
+## Link to 3 min video - summary of this gem:
     
+    https://youtu.be/_dtPMYW2-zc
+

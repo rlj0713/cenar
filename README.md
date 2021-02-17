@@ -1,6 +1,6 @@
 # Cenar
 
-Decide what you want for dinner and receive a simple shopping list and recipe.
+Users can decide what they want for dinner by selecting a main ingredient.  Upon selection, users are presented with recipe options for them to choose from.  After selecting a recipe, users are presented with a shopping list and a brief cooking procedure.
 
 ## Installation
 
@@ -30,7 +30,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cenar. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/cenar/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/rlj0713/cenar. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/cenar/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -38,4 +38,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Cenar project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/cenar/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Cenar project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/rlj0713/cenar/blob/master/CODE_OF_CONDUCT.md).
