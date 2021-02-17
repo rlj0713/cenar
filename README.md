@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use this gem to fetch recipe and shopping lists for your app. This gem is not intended for commercial use.  If you are looking to use this gem in that capacity, please fork this gem and apply for the commercial API license here: https://www.themealdb.com/api.php
 
 ## Development
 
