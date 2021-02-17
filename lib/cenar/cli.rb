@@ -52,7 +52,7 @@ class Cenar::CLI
         user_choice = user_choice.to_i
         if user_choice > 0 && user_choice <= 5
             user_choice -= 1
-            selection = self.proteins[user_choice]                                      # Can I make this refer to the api class and keep one array of proteins?
+            selection = self.proteins[user_choice]                                  # Can I make this refer to the api class and keep one array of proteins?
         else
             user_choice_1
         end
