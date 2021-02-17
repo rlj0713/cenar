@@ -40,8 +40,8 @@ class Cenar::CLI
     
     def user_choice_2
         puts " \nPlease enter a recipe number to view the recipe & shopping list."
-        @choice2 = gets.chomp                                                      # Returns the number chosen by user as a string.
-        get_recipe_by_number(@choice2)                                             # Returns the number chosen by the user -1 as an integer.
+        @choice2 = gets.chomp                                                       # Returns the number chosen by user as a string.
+        get_recipe_by_number(@choice2)                                              # Returns the number chosen by the user -1 as an integer.
     end
 
     def proteins
