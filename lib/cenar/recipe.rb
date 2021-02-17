@@ -10,28 +10,24 @@ class Cenar::Recipe
         @@all << self
     end
 
-    def name
-        @full_hash
+    def name            #Returns the recipe name
         @name = @full_hash.select { |k, v| k == "strMeal" }
         @name = @name.values[0]
     end
 
-    def procedure
+    def procedure       #Prints a recipe procedure
         @instructions = @full_hash.select { |k, v| k == "strInstructions" }
-        @instructions =  @instructions.values[0]
+        puts @instructions.values[0]
     end
 
-    def shopping_list
+    def shopping_list   #Prints a shopping list
         @list = @full_hash.select { |k, v| k.include?("strIngredient") && v != "" && v != nil}
         @list = @list.values
         
         @quantity = @full_hash.select { |k, v| k.include?("strMeasure") && v != " " && v != nil}
         @quantity = @quantity.values
         
-        @merged = Hash[@list.zip(@quantity)]
-
-        # ap @merged, :indent => -2                             #Pretty, but a hash isn't really very tidy.
-        @merged.each { |k, v| puts "     \u2022 #{v} #{k}" }                #This looks ugly, work on the format.
+        Hash[@list.zip(@quantity)].each { |k, v| puts "     \u2022 #{v} #{k}" }
     end
 
 end

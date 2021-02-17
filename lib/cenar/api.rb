@@ -8,14 +8,6 @@ class Cenar::API
         @protein_options = ['Pork', 'Chicken', 'Beef', 'Vegetarian', 'Seafood']
     end
 
-    def all
-        @@all
-    end
-
-    def clear
-        @@all = []
-    end
-
     def create_all_meals(protein_number)
         protein_number = protein_number.to_i
         protein_number -= 1
@@ -40,5 +32,13 @@ class Cenar::API
                 return @meal_id                                                     # This returns the meal ID based on the user choice. Also, I know
             end                                                                     # Avi said never do this. How can I change this to be better?
         end
+    end
+
+    def all
+        @@all
+    end
+
+    def clear
+        @@all = []
     end
 end
