@@ -54,6 +54,7 @@ class Cenar::CLI
             user_choice -= 1
             selection = self.proteins[user_choice]                                  # Can I make this refer to the api class and keep one array of proteins?
         else
+            error_message
             user_choice_1
         end
     end
@@ -63,8 +64,13 @@ class Cenar::CLI
         if user_choice2 > 0 && user_choice2 <= 15
             user_choice2 -= 1
         else
+            error_message
             user_choice_2
         end
+    end
+
+    def error_message
+        puts " \n***Unrecognized input, please try again***"
     end
     
     def exit_pattern
