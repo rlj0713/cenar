@@ -73,6 +73,10 @@ class Cenar::CLI
         puts " \n***Unrecognized input, please try again***"
     end
     
+    def break_space
+        puts " \n------------------------------------------------------------------------------------------------\n "
+    end
+    
     def exit_pattern
         puts " \nWould you like look up another recipe? (yes / no)"
         yes_options = ["yes", "Yes", "y", "Y", "si", "Si"]
@@ -82,9 +86,5 @@ class Cenar::CLI
         else                                                                    # recipes that I was not asking for.
             puts " \nEnjoy your meal!"
         end
-    end
-
-    def break_space
-        puts " \n------------------------------------------------------------------------------------------------\n "
     end
 end

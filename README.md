@@ -6,11 +6,7 @@ Users can decide what they want for dinner by selecting a main ingredient.  Upon
 
 Add this line to your application's Gemfile:
 
-require gem 'cenar'
-
-And then execute:
-
-    gem "cenar", "0.1.0", :git => "https://github.com/rlj0713/cenar"
+    gem "cenar", :git => "https://github.com/rlj0713/cenar"
 ## Usage
 
 Use this gem to fetch recipe and shopping lists for your app. This gem is not intended for commercial use.  If you are looking to use this gem in that capacity, please fork this gem and apply for the commercial API license here: https://www.themealdb.com/api.php
@@ -23,7 +19,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/rlj0713/cenar. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/cenar/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/rlj0713/cenar. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/rlj0713/cenar/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 

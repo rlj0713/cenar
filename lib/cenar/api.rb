@@ -23,8 +23,7 @@ class Cenar::API
     def get_recipe_id(recipe_choice)
         @@all[recipe_choice].select do |key, value|
             if key == "idMeal"
-                meal_id = HTTParty.get('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + value).values[0][0].select { |k, v| k == "idMeal" }
-                @recipe_id = meal_id.values[0].to_i
+                @recipe_id = HTTParty.get('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + value).values[0][0].select { |k, v| k == "idMeal" }.values[0].to_i
             end
         end
         @recipe_id
