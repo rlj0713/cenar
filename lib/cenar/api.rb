@@ -9,8 +9,7 @@ class Cenar::API
     end
 
     def create_all_meals(protein_number)
-        protein_number = protein_number.to_i
-        protein_number -= 1
+        protein_number = (protein_number.to_i) - 1
         HTTParty.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + @protein_options[protein_number]).take(15).each do |meals|
             i = 1
             meals[1].take(15).each do |recipe_hashes|
