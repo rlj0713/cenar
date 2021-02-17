@@ -29,11 +29,9 @@ class Cenar::Recipe
         @quantity = @quantity.values
         
         @merged = Hash[@list.zip(@quantity)]
-        ap @merged, :indent => -2                   #Pretty, but not good enough
 
-        # @merged.each do |key, value|              #This looks ugly, iterate through and make a format.
-        #     puts "#{value} --- #{key}"
-        # end
+        # ap @merged, :indent => -2                             #Pretty, but a hash isn't really very tidy.
+        @merged.each { |k, v| puts "     \u2022 #{v} #{k}" }                #This looks ugly, work on the format.
     end
 
 end

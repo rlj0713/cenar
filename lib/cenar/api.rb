@@ -22,11 +22,10 @@ class Cenar::API
         all_meals = HTTParty.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + @protein_options[protein_number])
         all_meals.take(15).each do |meals|
             i = 1
-            meals[1].take(15).each do |recipe_hashes|           #defaulting to pork here?  -  take(15)? could be breaking things...
+            meals[1].take(15).each do |recipe_hashes|
                 puts "#{i}. - #{recipe_hashes.values[0]}"
                 i += 1
-                # binding.pry
-                @@all << recipe_hashes          #Recipe Numbers >= 10 return the recipe of the category one number greater than it should. 
+                @@all << recipe_hashes
             end
         end
     end
@@ -36,11 +35,10 @@ class Cenar::API
             if key == "idMeal"
                 @detail = HTTParty.get('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + value)
                 @detail = @detail.values
-                @meal_id = @detail[0][0].select { |k, v| k == "idMeal" }   #Suspect that the multiple digit bug comes from here.
+                @meal_id = @detail[0][0].select { |k, v| k == "idMeal" }
                 @meal_id = @meal_id.values[0].to_i
-                return @meal_id     #This returns the meal ID based on the user choice. Also, I know Avi said never do this. How can I change this to be better?
-                                    #Stamppot returns Matar Paneer - maybe thsi is the bug?
-            end
+                return @meal_id                                                     # This returns the meal ID based on the user choice. Also, I know
+            end                                                                     # Avi said never do this. How can I change this to be better?
         end
     end
 end
