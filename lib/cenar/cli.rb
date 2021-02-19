@@ -24,10 +24,18 @@ class Cenar::CLI
         break_space
         
         puts "You have chosen #{recipe1.name}, great choice!\n Shopping List:\n "   # The user's choice is confirmed
-        recipe1.shopping_list                                                       # The appropriate shopping list & procedure are printed
+        recipe1.shopping_list.each { |k, v| puts "     \u2022 #{v} #{k}" }          # The appropriate shopping list & procedure are printed
         puts " \nCooking Instructions:\n "
-        recipe1.procedure
+        puts recipe1.procedure                                                      # What if I wanted to do something besides print the shopping list?
         
+        # def write_string_to_file(recipe_string)
+            
+        # end
+        
+        # shopping_list_string = recipe1.shopping_list
+        # puts shopping_list_string
+        # binding.pry
+
         exit_pattern        
     end
     
