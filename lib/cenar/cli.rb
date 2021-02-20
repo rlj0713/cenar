@@ -46,8 +46,8 @@ class Cenar::CLI
         
         # Meal header is printed
         puts "You have seleced #{meals[meal_choice].recipe_name}, great choice!"
-        puts "Recipe Nationality - #{meals[meal_choice].cuisine_nationality}\n "
-        puts "How-to-Video - #{meals[meal_choice].cuisine_video}"
+        puts "Recipe Nationality - #{meals[meal_choice].cuisine_nationality}"
+        puts "How-to-Video - #{meals[meal_choice].cuisine_video}\n "
         
         # Shopping list is printed
         puts "Shopping List:"

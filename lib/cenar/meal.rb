@@ -54,7 +54,6 @@ class Cenar::Meal
         @cuisine_video
     end
 
-
     private
     def get_hash
         if @full_hash == {}
