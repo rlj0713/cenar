@@ -7,6 +7,5 @@ gemspec
 
 gem "rake", "~> 13.0"
 gem "httparty"
-
-# gem "rspec/minitest/test-unit", "~> "
+gem "yard", :git => "https://github.com/lsegal/yard"
 

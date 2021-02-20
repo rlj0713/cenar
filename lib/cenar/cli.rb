@@ -21,14 +21,14 @@ class Cenar::CLI
             protein_category_choice < 0 || protein_category_choice >= 5 ? print_error_message : break
         end
 
-        api = Cenar::API.new
         print_break_space
 
         # Print meals from that category
-        puts "#{api.protein_options[protein_category_choice]} dinner options:\n "
+        puts "#{Cenar::API.protein_options[protein_category_choice]} dinner options:\n "
         
         # User selects a meal number
-        meals = api.list_meals(protein_category_choice)
+        meals = Cenar::API.list_meals(protein_category_choice)
+        meals = Cenar::API.list_meals(protein_category_choice)
         
         # A list of meals is printed
         meals.each_with_index do |meal, index|
@@ -47,6 +47,7 @@ class Cenar::CLI
         # Meal header is printed
         puts "You have seleced #{meals[meal_choice].recipe_name}, great choice!"
         puts "Recipe Nationality - #{meals[meal_choice].cuisine_nationality}\n "
+        puts "How-to-Video - #{meals[meal_choice].cuisine_video}"
         
         # Shopping list is printed
         puts "Shopping List:"
@@ -55,7 +56,7 @@ class Cenar::CLI
         end
         
         # Recipe procedure is printed
-        puts " \nRecipe Procedure:"
+        puts " \n  Recipe Procedure:"
         puts "#{meals[meal_choice].procedure}"
     end
     

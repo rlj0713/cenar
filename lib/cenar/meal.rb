@@ -9,10 +9,10 @@ class Cenar::Meal
         @procedure = nil
         @shopping_list = []
         @cuisine_nationality = nil
+        @cuisine_video = nil
     end 
 
-    # Returns the meal procedure
-    # @return [String] Meal procedure
+    # Returns the meal procedure as a string
     def procedure
         if @procedure == nil
             @procedure = get_hash["strInstructions"]
@@ -20,8 +20,7 @@ class Cenar::Meal
         @procedure
     end
 
-    # Returns the shopping list
-    # @return [Array] Meal shopping_list
+    # Returns the shopping list as an array
     def shopping_list
         if @shopping_list.empty?
             ingredient_names = get_hash.select { |k, v| k.include?("strIngredient")}.values
@@ -39,8 +38,7 @@ class Cenar::Meal
         @shopping_list
     end
 
-    # Returns the meal nationality
-    # @return [String] Meal nationality
+    # Returns the meal nationality as a string
     def cuisine_nationality
         if @cuisine_nationality == nil
             @cuisine_nationality = get_hash["strArea"]
@@ -48,13 +46,19 @@ class Cenar::Meal
         @cuisine_nationality
     end
 
+    # Returns the YouTube instructional link
+    def cuisine_video
+        if @cuisine_video == nil
+            @cuisine_video = get_hash["strYoutube"]
+        end
+        @cuisine_video
+    end
+
+
     private
-    # Returns the meal hash given the recipe_id attr
-    # @note Lazily GETs the meal information to reduce calls to the themealdb API which can be slow
-    # @return [Hash] A hash containing meal details
     def get_hash
-        if @full_hash.empty?
-            @full_hash = HTTParty.get('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + self.recipe_id.to_s).values[0][0]
+        if @full_hash == {}
+            @full_hash = Cenar::API.get_meal_info(@recipe_id)
         end
         @full_hash
     end

@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Reid Jackson"]
   spec.email         = ["rlj0713@gmail.com"]
 
-  spec.summary       = "Generate a recipe and shopping list for yuor dinner."
+  spec.summary       = "Generate a recipe and shopping list for your dinner."
   spec.description   = "This app presents users with a list of recipes.  Users can choose a recipe based on the main ingerdient.  Users can also indicate how many people need to eat.  The app will return a recipe and shopping list for that meal."
   spec.homepage      = "https://github.com/rlj0713/cenar"
   spec.license       = "MIT"
