@@ -13,86 +13,58 @@ class Cenar::CLI
         puts "    (||           "
         puts "     ''           \n "
 
-        user_choice_1                                                               # User chooses their protein
-        @api1 = Cenar::API.new                                                      # A new instance of the API class is created
-        break_space
 
-        puts "#{get_meals_by_protein(@choice1)} dinner options:\n "                 # The user's choice is confirmed
-        @api1.create_all_meals(@choice1)                                            # Print a list of recipes for the protein chosen
-                                                                                  
-        recipe1 = Cenar::Recipe.new(@api1.get_recipe_id(user_choice_2))             # User chooses a recipe and that recipe is converted into an id number                      
-        break_space
-        
-        puts "You have chosen #{recipe1.name}, great choice!\n Shopping List:\n "   # The user's choice is confirmed
-        recipe1.shopping_list.each { |k, v| puts "     \u2022 #{v} #{k}" }          # The appropriate shopping list & procedure are printed
-        puts " \nCooking Instructions:\n "
-        puts recipe1.procedure                                                      # What if I wanted to do something besides print the shopping list?
-        
-        # def write_string_to_file(recipe_string)
-            
-        # end
-        
-        # shopping_list_string = recipe1.shopping_list
-        # puts shopping_list_string
-        # binding.pry
-
-        exit_pattern        
-    end
-    
-    def user_choice_1
-        puts "Please enter a number (1 - 5) to make your selection."
-        @choice1 = gets.chomp
-        get_meals_by_protein(@choice1)
-        puts ""
-    end
-    
-    def user_choice_2
-        puts " \nPlease enter a recipe number to view the recipe & shopping list."
-        @choice2 = gets.chomp                                                       # Returns the number chosen by user as a string.
-        get_recipe_by_number(@choice2)                                              # Returns the number chosen by the user -1 as an integer.
-    end
-
-    def proteins
-        @proteins = ['Pork', 'Chicken', 'Beef', 'Vegetables', 'Seafood']
-    end
-    
-    def get_meals_by_protein(user_choice)
-        user_choice = user_choice.to_i
-        if user_choice > 0 && user_choice <= 5
-            user_choice -= 1
-            selection = self.proteins[user_choice]                                  # Can I make this refer to the api class and keep one array of proteins?
-        else
-            error_message
-            user_choice_1
+        # User selects a meal category
+        while true
+            puts "Please enter a number (1 - 5) to make your selection."
+            protein_category_choice = gets.chomp.to_i - 1
+            protein_category_choice < 0 || protein_category_choice >= 5 ? print_error_message : break
         end
+
+        api = Cenar::API.new
+        print_break_space
+
+        # Print meals from that category
+        puts "#{api.protein_options[protein_category_choice]} dinner options:\n "
+        
+        # User selects a meal number
+        meals = api.list_meals(protein_category_choice)
+        
+        # A list of meals is printed
+        meals.each_with_index do |meal, index|
+            puts "#{index + 1}.  #{meal.recipe_name}"
+        end
+        
+        # User selects a meal from the list
+        while true
+            puts " \nPlease enter a recipe number to view the recipe & shopping list."
+            meal_choice = gets.chomp.to_i - 1
+            meal_choice < 0 || meal_choice >= 15 ? print_error_message : break
+        end
+
+        print_break_space
+        
+        # Meal header is printed
+        puts "You have seleced #{meals[meal_choice].recipe_name}, great choice!"
+        puts "Recipe Nationality - #{meals[meal_choice].cuisine_nationality}\n "
+        
+        # Shopping list is printed
+        puts "Shopping List:"
+        meals[meal_choice].shopping_list.each do |item|
+            puts "     \u2022 #{item}"
+        end
+        
+        # Recipe procedure is printed
+        puts " \nRecipe Procedure:"
+        puts "#{meals[meal_choice].procedure}"
     end
     
-    def get_recipe_by_number(user_choice2)
-        user_choice2 = user_choice2.to_i
-        if user_choice2 > 0 && user_choice2 <= 15
-            user_choice2 -= 1
-        else
-            error_message
-            user_choice_2
-        end
-    end
-
-    def error_message
+    def print_error_message
         puts " \n***Unrecognized input, please try again***"
     end
     
-    def break_space
+    def print_break_space
         puts " \n------------------------------------------------------------------------------------------------\n "
     end
     
-    def exit_pattern
-        puts " \nWould you like look up another recipe? (yes / no)"
-        yes_options = ["yes", "Yes", "y", "Y", "si", "Si"]
-        if yes_options.include?(gets.chomp)
-            @api1.clear                                                         # This bug took a while, I wasn't clearing the array api.all and when I made
-            call                                                                # multiple queries, the array was appended, which caused a my code to return 
-        else                                                                    # recipes that I was not asking for.
-            puts " \nEnjoy your meal!"
-        end
-    end
 end

@@ -2,6 +2,16 @@
 
 require_relative '../config/environment'
 
-Cenar::CLI.new.call
+cli1 = Cenar::CLI.new
+while true
+    cli1.call
+    puts " \nWould you like look up another recipe? (yes / no)"
+
+    yes_options = ["yes", "Yes", "y", "Y", "si", "Si"]
+    if yes_options.include?(gets.chomp) == false
+        puts " \nEnjoy your meal!"
+        break
+    end
+end
 #  .new is a class method on the CLI class*
 #  .call is an instance method on the new instance of CLI
