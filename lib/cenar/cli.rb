@@ -1,6 +1,7 @@
 
 class Cenar::CLI
     def call
+        # Print welcome screen
         puts " \nGood evening, what do you feel like eating for dinner?\n "
         puts "           _      "
         puts "          / )     "
@@ -13,17 +14,15 @@ class Cenar::CLI
         puts "    (||           "
         puts "     ''           \n "
 
-
         # User selects a meal category
         while true
             puts "Please enter a number (1 - 5) to make your selection."
             protein_category_choice = gets.chomp.to_i - 1
             protein_category_choice < 0 || protein_category_choice >= 5 ? print_error_message : break
         end
-
-        print_break_space
-
+        
         # Print meals from that category
+        print_break_space
         puts "#{Cenar::API.protein_options[protein_category_choice]} dinner options:\n "
         
         # User selects a meal number
@@ -41,13 +40,12 @@ class Cenar::CLI
             meal_choice = gets.chomp.to_i - 1
             meal_choice < 0 || meal_choice >= 15 ? print_error_message : break
         end
-
-        print_break_space
         
         # Meal header is printed
+        print_break_space
         puts "You have seleced #{meals[meal_choice].recipe_name}, great choice!"
-        puts "Recipe Nationality - #{meals[meal_choice].cuisine_nationality}"
-        puts "How-to-Video - #{meals[meal_choice].cuisine_video}\n "
+        puts "Recipe Nationality: #{meals[meal_choice].cuisine_nationality}"
+        puts "How-to-Video: #{meals[meal_choice].cuisine_video}\n "
         
         # Shopping list is printed
         puts "Shopping List:"
@@ -56,7 +54,7 @@ class Cenar::CLI
         end
         
         # Recipe procedure is printed
-        puts " \n  Recipe Procedure:"
+        puts " \n - Recipe Procedure - "
         puts "#{meals[meal_choice].procedure}"
     end
     
@@ -67,5 +65,4 @@ class Cenar::CLI
     def print_break_space
         puts " \n------------------------------------------------------------------------------------------------\n "
     end
-    
 end
