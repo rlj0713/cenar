@@ -7,9 +7,7 @@ class Cenar::API
         @@protein_options
     end
 
-    # This method returns a list of meal instances
-    # @param [Numeric] protein_number is the index value of @protein_options
-    # @return [Array] of meal instances given a protein choice
+    # Given a protein_number, this method returns an array of meal instances
     def self.list_meals(protein_number)
         tmp_meals = []
         HTTParty.get("#{@@url}filter.php?c=" + protein_options[protein_number])["meals"].take(15).each do |meal_info|
@@ -18,9 +16,7 @@ class Cenar::API
         tmp_meals
     end
 
-    # Returns a hash for the meal_id
-    # @param [Numeric] meal_choice is the id number for a specific recipe
-    # @return [Hash] of details for the meal chosen
+    # Given a meal_choice, this returns a meal_id hash
     def self.get_meal_info(meal_id)
         HTTParty.get("#{@@url}lookup.php?i=" + meal_id.to_s).values[0][0]
     end

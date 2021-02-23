@@ -13,5 +13,3 @@ while true
         break
     end
 end
-#  .new is a class method on the CLI class*
-#  .call is an instance method on the new instance of CLI
