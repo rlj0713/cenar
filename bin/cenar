@@ -5,7 +5,7 @@ require_relative '../config/environment'
 cli1 = Cenar::CLI.new
 while true
     cli1.call
-    puts " \nWould you like look up another recipe? (yes / no)"
+    puts " \nWould you like look up another recipe? (Yes / No)"
 
     yes_options = ["yes", "Yes", "y", "Y", "si", "Si"]
     if yes_options.include?(gets.chomp) == false

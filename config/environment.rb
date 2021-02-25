@@ -1,5 +1,6 @@
 
 require "pry"
+
 require "httparty"
 require_relative "../lib/cenar/version"
 require_relative "../lib/cenar/meal"
