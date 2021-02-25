@@ -19,14 +19,13 @@ class Cenar::CLI
             puts "Please enter a number (1 - 5) to make your selection."
             protein_category_choice = gets.chomp.to_i - 1
             protein_category_choice < 0 || protein_category_choice >= 5 ? print_error_message : break
-        end
+        end 
         
         # Print meals from that category
         print_break_space
         puts "#{Cenar::API.protein_options[protein_category_choice]} dinner options:\n "
         
         # User selects a meal number
-        meals = Cenar::API.list_meals(protein_category_choice)
         meals = Cenar::API.list_meals(protein_category_choice)
         
         # A list of meals is printed

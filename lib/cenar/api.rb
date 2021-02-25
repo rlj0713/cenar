@@ -7,7 +7,7 @@ class Cenar::API
         @@protein_options
     end
 
-    # Given a protein_number, this method returns an array of meal instances
+    # Given a protein_number, this returns an array of meal instances
     def self.list_meals(protein_number)
         tmp_meals = []
         HTTParty.get("#{@@url}filter.php?c=" + protein_options[protein_number])["meals"].take(15).each do |meal_info|
