@@ -54,6 +54,7 @@ class Cenar::Meal
         @cuisine_video
     end
 
+    # Returns the full hash of information for a meal
     def get_hash
         if @full_hash == {}
             @full_hash = Cenar::API.get_meal_info(@recipe_id)
