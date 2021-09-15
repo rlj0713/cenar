@@ -1,5 +1,7 @@
 # Cenar
 
+User Walk-Through - https://youtu.be/_dtPMYW2-zc
+
 Users can decide what they want for dinner by selecting a main ingredient.  Upon selection, users are presented with recipe options for them to choose from.  After selecting a recipe, users are presented with a shopping list and a brief cooking procedure.
 
 ## Installation
